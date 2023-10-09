@@ -1,0 +1,10 @@
+_lcd_command: CODE, 998 0 21
+_lcd_data: CODE, 1019 0 21
+_start_game: CODE, 1162 0 80
+_main: CODE, 1675 0 373
+_game_over: CODE, 1327 0 91
+_score: CODE, 1524 0 151
+_reset_game: CODE, 1418 0 106
+_character: CODE, 1242 0 85
+_dino_jump: CODE, 1106 0 56
+Total: 984

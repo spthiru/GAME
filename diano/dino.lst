@@ -1,0 +1,1658 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.81 build 7503 
+                                                                                               Fri Sep 22 07:05:25 2023
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 7503
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 7503"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNCALL	_main,_dino
+    43                           	FNCALL	_main,_lcd_command
+    44                           	FNCALL	_main,_lcd_data
+    45                           	FNCALL	_main,_delay
+    46                           	FNCALL	_main,_jump
+    47                           	FNCALL	_main,_gameover
+    48                           	FNCALL	_main,_main
+    49                           	FNCALL	_gameover,_lcd_command
+    50                           	FNCALL	_gameover,_lcd_data
+    51                           	FNCALL	_jump,_lcd_command
+    52                           	FNCALL	_jump,_lcd_data
+    53                           	FNCALL	_jump,_delay
+    54                           	FNCALL	_dino,_lcd_command
+    55                           	FNCALL	_dino,_delay
+    56                           	FNCALL	_dino,_lcd_data
+    57                           	FNCALL	_lcd_data,_delay
+    58                           	FNCALL	_lcd_command,_delay
+    59                           	FNROOT	_main
+    60                           	global	_object
+    61                           	global	_object1
+    62                           psect	idataBANK0,class=CODE,space=0,delta=2
+    63                           global __pidataBANK0
+    64  0594                     __pidataBANK0:
+    65                           	file	"G:\PIC ass\LCD Display\diano\diano.c"
+    66                           	line	17
+    67                           
+    68                           ;initializer for _object
+    69  0594  3415               	retlw	015h
+    70  0595  3415               	retlw	015h
+    71  0596  3415               	retlw	015h
+    72  0597  341F               	retlw	01Fh
+    73  0598  3404               	retlw	04h
+    74  0599  3404               	retlw	04h
+    75  059A  3404               	retlw	04h
+    76  059B  3400               	retlw	0
+    77                           	line	18
+    78                           
+    79                           ;initializer for _object1
+    80  059C  3407               	retlw	07h
+    81  059D  3407               	retlw	07h
+    82  059E  3406               	retlw	06h
+    83  059F  3417               	retlw	017h
+    84  05A0  341F               	retlw	01Fh
+    85  05A1  3406               	retlw	06h
+    86  05A2  3406               	retlw	06h
+    87  05A3  3400               	retlw	0
+    88                           	global	_j
+    89                           	global	_object2
+    90                           	global	_PORTD
+    91  0008                     _PORTD	set	8
+    92                           	global	_TMR1H
+    93  000F                     _TMR1H	set	15
+    94                           	global	_TMR1L
+    95  000E                     _TMR1L	set	14
+    96                           	global	_RC0
+    97  0038                     _RC0	set	56
+    98                           	global	_RC1
+    99  0039                     _RC1	set	57
+   100                           	global	_RC2
+   101  003A                     _RC2	set	58
+   102                           	global	_RC3
+   103  003B                     _RC3	set	59
+   104                           	global	_T1CKPS0
+   105  0084                     _T1CKPS0	set	132
+   106                           	global	_T1CKPS1
+   107  0085                     _T1CKPS1	set	133
+   108                           	global	_TMR1CS
+   109  0081                     _TMR1CS	set	129
+   110                           	global	_TMR1IF
+   111  0060                     _TMR1IF	set	96
+   112                           	global	_TMR1ON
+   113  0080                     _TMR1ON	set	128
+   114                           	global	_TRISD
+   115  0088                     _TRISD	set	136
+   116                           	global	_TRISC0
+   117  0438                     _TRISC0	set	1080
+   118                           	global	_TRISC1
+   119  0439                     _TRISC1	set	1081
+   120                           	global	_TRISC2
+   121  043A                     _TRISC2	set	1082
+   122                           	global	_TRISC3
+   123  043B                     _TRISC3	set	1083
+   124                           	file	"dino.as"
+   125                           	line	#
+   126                           psect cinit,class=CODE,delta=2
+   127                           global start_initialization
+   128  05E9                     start_initialization:
+   129                           
+   130                           psect	bssCOMMON,class=COMMON,space=1
+   131                           global __pbssCOMMON
+   132  0077                     __pbssCOMMON:
+   133  0077                     _j:
+   134  0077                            ds      2
+   135                           
+   136                           psect	bssBANK0,class=BANK0,space=1
+   137                           global __pbssBANK0
+   138  0030                     __pbssBANK0:
+   139  0030                     _object2:
+   140  0030                            ds      8
+   141                           
+   142                           psect	dataBANK0,class=BANK0,space=1
+   143                           global __pdataBANK0
+   144  0020                     __pdataBANK0:
+   145                           	file	"G:\PIC ass\LCD Display\diano\diano.c"
+   146                           	line	17
+   147  0020                     _object:
+   148  0020                            ds      8
+   149                           
+   150                           psect	dataBANK0
+   151                           	file	"G:\PIC ass\LCD Display\diano\diano.c"
+   152                           	line	18
+   153  0028                     _object1:
+   154  0028                            ds      8
+   155                           
+   156                           ; Clear objects allocated to COMMON
+   157                           psect cinit,class=CODE,delta=2
+   158  05E9  01F7               	clrf	((__pbssCOMMON)+0)&07Fh
+   159  05EA  01F8               	clrf	((__pbssCOMMON)+1)&07Fh
+   160                           ; Clear objects allocated to BANK0
+   161                           psect cinit,class=CODE,delta=2
+   162  05EB  01B0               	clrf	((__pbssBANK0)+0)&07Fh
+   163  05EC  01B1               	clrf	((__pbssBANK0)+1)&07Fh
+   164  05ED  01B2               	clrf	((__pbssBANK0)+2)&07Fh
+   165  05EE  01B3               	clrf	((__pbssBANK0)+3)&07Fh
+   166  05EF  01B4               	clrf	((__pbssBANK0)+4)&07Fh
+   167  05F0  01B5               	clrf	((__pbssBANK0)+5)&07Fh
+   168  05F1  01B6               	clrf	((__pbssBANK0)+6)&07Fh
+   169  05F2  01B7               	clrf	((__pbssBANK0)+7)&07Fh
+   170                           global btemp
+   171                           psect inittext,class=CODE,delta=2
+   172                           global init_fetch,btemp
+   173                           ;	Called with low address in FSR and high address in W
+   174  05C6                     init_fetch:
+   175  05C6  087E               	movf btemp,w
+   176  05C7  008A               	movwf pclath
+   177  05C8  087F               	movf btemp+1,w
+   178  05C9  0082               	movwf pc
+   179                           global init_ram
+   180                           ;Called with:
+   181                           ;	high address of idata address in btemp 
+   182                           ;	low address of idata address in btemp+1 
+   183                           ;	low address of data in FSR
+   184                           ;	high address + 1 of data in btemp-1
+   185  05CA                     init_ram:
+   186  05CA  25C6  120A  118A   	fcall init_fetch
+   187  05CD  0080               	movwf indf,f
+   188  05CE  0A84               	incf fsr,f
+   189  05CF  0804               	movf fsr,w
+   190  05D0  067D               	xorwf btemp-1,w
+   191  05D1  1903               	btfsc status,2
+   192  05D2  3400               	retlw 0
+   193  05D3  0AFF               	incf btemp+1,f
+   194  05D4  1903               	btfsc status,2
+   195  05D5  0AFE               	incf btemp,f
+   196  05D6  2DCA               	goto init_ram
+   197                           ; Initialize objects allocated to BANK0
+   198                           psect cinit,class=CODE,delta=2
+   199                           global init_ram, __pidataBANK0
+   200  05F3  1383               	bcf	status, 7	;select IRP bank0
+   201  05F4  3030               	movlw low(__pdataBANK0+16)
+   202  05F5  00FD               	movwf btemp-1,f
+   203  05F6  3005               	movlw high(__pidataBANK0)
+   204  05F7  00FE               	movwf btemp,f
+   205  05F8  3094               	movlw low(__pidataBANK0)
+   206  05F9  00FF               	movwf btemp+1,f
+   207  05FA  3020               	movlw low(__pdataBANK0)
+   208  05FB  0084               	movwf fsr,f
+   209  05FC  120A  118A  25CA   	fcall init_ram
+              120A  118A         
+   210                           psect cinit,class=CODE,delta=2
+   211                           global end_of_initialization
+   212                           
+   213                           ;End of C runtime variable initialization code
+   214                           
+   215  0601                     end_of_initialization:
+   216  0601  0183               clrf status
+   217  0602  120A  118A  2F12   ljmp _main	;jump to C main() function
+   218                           psect	cstackCOMMON,class=COMMON,space=1
+   219                           global __pcstackCOMMON
+   220  0070                     __pcstackCOMMON:
+   221                           	global	?_lcd_command
+   222  0070                     ?_lcd_command:	; 0 bytes @ 0x0
+   223                           	global	??_lcd_command
+   224  0070                     ??_lcd_command:	; 0 bytes @ 0x0
+   225                           	global	?_lcd_data
+   226  0070                     ?_lcd_data:	; 0 bytes @ 0x0
+   227                           	global	??_lcd_data
+   228  0070                     ??_lcd_data:	; 0 bytes @ 0x0
+   229                           	global	?_delay
+   230  0070                     ?_delay:	; 0 bytes @ 0x0
+   231                           	global	??_delay
+   232  0070                     ??_delay:	; 0 bytes @ 0x0
+   233                           	global	?_jump
+   234  0070                     ?_jump:	; 0 bytes @ 0x0
+   235                           	global	?_gameover
+   236  0070                     ?_gameover:	; 0 bytes @ 0x0
+   237                           	global	?_main
+   238  0070                     ?_main:	; 0 bytes @ 0x0
+   239                           	global	lcd_data@data
+   240  0070                     lcd_data@data:	; 1 bytes @ 0x0
+   241                           	global	lcd_command@data
+   242  0070                     lcd_command@data:	; 1 bytes @ 0x0
+   243  0070                     	ds	1
+   244                           	global	?_dino
+   245  0071                     ?_dino:	; 0 bytes @ 0x1
+   246                           	global	??_jump
+   247  0071                     ??_jump:	; 0 bytes @ 0x1
+   248                           	global	??_gameover
+   249  0071                     ??_gameover:	; 0 bytes @ 0x1
+   250                           	global	dino@num
+   251  0071                     dino@num:	; 1 bytes @ 0x1
+   252                           	global	jump@i
+   253  0071                     jump@i:	; 2 bytes @ 0x1
+   254  0071                     	ds	1
+   255                           	global	??_dino
+   256  0072                     ??_dino:	; 0 bytes @ 0x2
+   257  0072                     	ds	1
+   258                           	global	dino@obj
+   259  0073                     dino@obj:	; 1 bytes @ 0x3
+   260  0073                     	ds	1
+   261                           	global	dino@i
+   262  0074                     dino@i:	; 2 bytes @ 0x4
+   263  0074                     	ds	2
+   264                           	global	??_main
+   265  0076                     ??_main:	; 0 bytes @ 0x6
+   266  0076                     	ds	1
+   267 ;;Data sizes: Strings 0, constant 0, data 16, bss 10, persistent 0 stack 0
+   268 ;;Auto spaces:   Size  Autos    Used
+   269 ;; COMMON          14      7       9
+   270 ;; BANK0           80      0      24
+   271 ;; BANK1           80      0       0
+   272 ;; BANK3           96      0       0
+   273 ;; BANK2           96      0       0
+   274                           
+   275 ;;
+   276 ;; Pointer list with targets:
+   277                           
+   278 ;; dino@obj	PTR unsigned char  size(1) Largest target is 8
+   279 ;;		 -> object2(BANK0[8]), object1(BANK0[8]), object(BANK0[8]), 
+   280 ;;
+   281                           
+   282                           
+   283 ;;
+   284 ;; Critical Paths under _main in COMMON
+   285 ;;
+   286 ;;   _main->_dino
+   287 ;;   _gameover->_lcd_command
+   288 ;;   _gameover->_lcd_data
+   289 ;;   _jump->_lcd_command
+   290 ;;   _jump->_lcd_data
+   291 ;;   _dino->_lcd_command
+   292 ;;   _dino->_lcd_data
+   293 ;;
+   294 ;; Critical Paths under _main in BANK0
+   295 ;;
+   296 ;;   None.
+   297 ;;
+   298 ;; Critical Paths under _main in BANK1
+   299 ;;
+   300 ;;   None.
+   301 ;;
+   302 ;; Critical Paths under _main in BANK3
+   303 ;;
+   304 ;;   None.
+   305 ;;
+   306 ;; Critical Paths under _main in BANK2
+   307 ;;
+   308 ;;   None.
+   309                           
+   310 ;;
+   311 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   312 ;;
+   313                           
+   314 ;;
+   315 ;;Call Graph Tables:
+   316 ;;
+   317 ;; ---------------------------------------------------------------------------------
+   318 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   319 ;; ---------------------------------------------------------------------------------
+   320 ;; (0) _main                                                 1     1      0     712
+   321 ;;                                              6 COMMON     1     1      0
+   322 ;;                               _dino
+   323 ;;                        _lcd_command
+   324 ;;                           _lcd_data
+   325 ;;                              _delay
+   326 ;;                               _jump
+   327 ;;                           _gameover
+   328 ;;                               _main
+   329 ;; ---------------------------------------------------------------------------------
+   330 ;; (1) _gameover                                             0     0      0      44
+   331 ;;                        _lcd_command
+   332 ;;                           _lcd_data
+   333 ;; ---------------------------------------------------------------------------------
+   334 ;; (1) _jump                                                 2     2      0     112
+   335 ;;                                              1 COMMON     2     2      0
+   336 ;;                        _lcd_command
+   337 ;;                           _lcd_data
+   338 ;;                              _delay
+   339 ;; ---------------------------------------------------------------------------------
+   340 ;; (1) _dino                                                 5     4      1     156
+   341 ;;                                              1 COMMON     5     4      1
+   342 ;;                        _lcd_command
+   343 ;;                              _delay
+   344 ;;                           _lcd_data
+   345 ;; ---------------------------------------------------------------------------------
+   346 ;; (2) _lcd_data                                             1     1      0      22
+   347 ;;                                              0 COMMON     1     1      0
+   348 ;;                              _delay
+   349 ;; ---------------------------------------------------------------------------------
+   350 ;; (2) _lcd_command                                          1     1      0      22
+   351 ;;                                              0 COMMON     1     1      0
+   352 ;;                              _delay
+   353 ;; ---------------------------------------------------------------------------------
+   354 ;; (3) _delay                                                0     0      0       0
+   355 ;; ---------------------------------------------------------------------------------
+   356 ;; Estimated maximum stack depth 3
+   357 ;; ---------------------------------------------------------------------------------
+   358                           
+   359 ;; Call Graph Graphs:
+   360                           
+   361 ;; _main (ROOT)
+   362 ;;   _dino
+   363 ;;     _lcd_command
+   364 ;;       _delay
+   365 ;;     _delay
+   366 ;;     _lcd_data
+   367 ;;       _delay
+   368 ;;   _lcd_command
+   369 ;;     _delay
+   370 ;;   _lcd_data
+   371 ;;     _delay
+   372 ;;   _delay
+   373 ;;   _jump
+   374 ;;     _lcd_command
+   375 ;;       _delay
+   376 ;;     _lcd_data
+   377 ;;       _delay
+   378 ;;     _delay
+   379 ;;   _gameover
+   380 ;;     _lcd_command
+   381 ;;       _delay
+   382 ;;     _lcd_data
+   383 ;;       _delay
+   384 ;;
+   385                           
+   386 ;; Address spaces:
+   387                           
+   388 ;;Name               Size   Autos  Total    Cost      Usage
+   389 ;;BANK3               60      0       0       9        0.0%
+   390 ;;BITBANK3            60      0       0       8        0.0%
+   391 ;;SFR3                 0      0       0       4        0.0%
+   392 ;;BITSFR3              0      0       0       4        0.0%
+   393 ;;BANK2               60      0       0      11        0.0%
+   394 ;;BITBANK2            60      0       0      10        0.0%
+   395 ;;SFR2                 0      0       0       5        0.0%
+   396 ;;BITSFR2              0      0       0       5        0.0%
+   397 ;;SFR1                 0      0       0       2        0.0%
+   398 ;;BITSFR1              0      0       0       2        0.0%
+   399 ;;BANK1               50      0       0       7        0.0%
+   400 ;;BITBANK1            50      0       0       6        0.0%
+   401 ;;CODE                 0      0       0       0        0.0%
+   402 ;;DATA                 0      0      24      12        0.0%
+   403 ;;ABS                  0      0      21       3        0.0%
+   404 ;;NULL                 0      0       0       0        0.0%
+   405 ;;STACK                0      0       3       2        0.0%
+   406 ;;BANK0               50      0      18       5       30.0%
+   407 ;;BITBANK0            50      0       0       4        0.0%
+   408 ;;SFR0                 0      0       0       1        0.0%
+   409 ;;BITSFR0              0      0       0       1        0.0%
+   410 ;;COMMON               E      7       9       1       64.3%
+   411 ;;BITCOMMON            E      0       0       0        0.0%
+   412 ;;EEDATA             100      0       0       0        0.0%
+   413                           
+   414                           	global	_main
+   415                           psect	maintext,global,class=CODE,delta=2
+   416                           global __pmaintext
+   417  0712                     __pmaintext:
+   418                           
+   419 ;; *************** function _main *****************
+   420 ;; Defined at:
+   421 ;;		line 21 in file "G:\PIC ass\LCD Display\diano\diano.c"
+   422 ;; Parameters:    Size  Location     Type
+   423 ;;		None
+   424 ;; Auto vars:     Size  Location     Type
+   425 ;;		None
+   426 ;; Return value:  Size  Location     Type
+   427 ;;		None               void
+   428 ;; Registers used:
+   429 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   430 ;; Tracked objects:
+   431 ;;		On entry : 0/0
+   432 ;;		On exit  : 0/0
+   433 ;;		Unchanged: 0/0
+   434 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   435 ;;      Params:         0       0       0       0       0
+   436 ;;      Locals:         0       0       0       0       0
+   437 ;;      Temps:          1       0       0       0       0
+   438 ;;      Totals:         1       0       0       0       0
+   439 ;;Total ram usage:        1 bytes
+   440 ;; Hardware stack levels required when called:    3
+   441 ;; This function calls:
+   442 ;;		_dino
+   443 ;;		_lcd_command
+   444 ;;		_lcd_data
+   445 ;;		_delay
+   446 ;;		_jump
+   447 ;;		_gameover
+   448 ;;		_main
+   449 ;; This function is called by:
+   450 ;; This function uses a non-reentrant model
+   451 ;;
+   452                           psect	maintext
+   453                           	file	"G:\PIC ass\LCD Display\diano\diano.c"
+   454                           	line	21
+   455                           	global	__size_of_main
+   456  00EE                     	__size_of_main	equ	__end_of_main-_main
+   457                           	
+   458  0712                     _main:	
+   459                           	opt	stack 5
+   460                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   461                           	line	22
+   462                           	
+   463  0712                     l2143:	
+   464                           ;diano.c: 22: dino(object,1);
+   465  0712  01F1               	clrf	(?_dino)
+   466  0713  1403               	bsf	status,0
+   467  0714  0DF1               	rlf	(?_dino),f
+   468  0715  3020               	movlw	(_object)&0ffh
+   469  0716  120A  118A  2605   	fcall	_dino
+              120A  118A         
+   470                           	line	23
+   471                           ;diano.c: 23: dino(object1,2);
+   472  071B  3002               	movlw	(02h)
+   473  071C  00F6               	movwf	(??_main+0)+0
+   474  071D  0876               	movf	(??_main+0)+0,w
+   475  071E  00F1               	movwf	(?_dino)
+   476  071F  3028               	movlw	(_object1)&0ffh
+   477  0720  120A  118A  2605   	fcall	_dino
+              120A  118A         
+   478                           	line	24
+   479                           ;diano.c: 24: dino(object2,3);
+   480  0725  3003               	movlw	(03h)
+   481  0726  00F6               	movwf	(??_main+0)+0
+   482  0727  0876               	movf	(??_main+0)+0,w
+   483  0728  00F1               	movwf	(?_dino)
+   484  0729  3030               	movlw	(_object2)&0ffh
+   485  072A  120A  118A  2605   	fcall	_dino
+              120A  118A         
+   486                           	line	25
+   487                           	
+   488  072F                     l2145:	
+   489                           ;diano.c: 25: TRISD=0;
+   490  072F  1683               	bsf	status, 5	;RP0=1, select bank1
+   491  0730  1303               	bcf	status, 6	;RP1=0, select bank1
+   492  0731  0188               	clrf	(136)^080h	;volatile
+   493                           	line	26
+   494                           	
+   495  0732                     l2147:	
+   496                           ;diano.c: 26: TRISC0=0;
+   497  0732  1007               	bcf	(1080/8)^080h,(1080)&7
+   498                           	line	27
+   499                           	
+   500  0733                     l2149:	
+   501                           ;diano.c: 27: TRISC1=0;
+   502  0733  1087               	bcf	(1081/8)^080h,(1081)&7
+   503                           	line	28
+   504                           	
+   505  0734                     l2151:	
+   506                           ;diano.c: 28: TRISC2=0;
+   507  0734  1107               	bcf	(1082/8)^080h,(1082)&7
+   508                           	line	29
+   509                           	
+   510  0735                     l2153:	
+   511                           ;diano.c: 29: TRISC3=1;
+   512  0735  1587               	bsf	(1083/8)^080h,(1083)&7
+   513                           	line	30
+   514                           	
+   515  0736                     l2155:	
+   516                           ;diano.c: 30: lcd_command(0x01);
+   517  0736  3001               	movlw	(01h)
+   518  0737  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+   519                           	line	31
+   520                           	
+   521  073C                     l2157:	
+   522                           ;diano.c: 31: lcd_command(0x0c);
+   523  073C  300C               	movlw	(0Ch)
+   524  073D  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+   525                           	line	32
+   526                           	
+   527  0742                     l2159:	
+   528                           ;diano.c: 32: lcd_command(0x38);
+   529  0742  3038               	movlw	(038h)
+   530  0743  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+   531                           	line	33
+   532                           	
+   533  0748                     l2161:	
+   534                           ;diano.c: 33: lcd_command(0xc0);
+   535  0748  30C0               	movlw	(0C0h)
+   536  0749  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+   537                           	line	34
+   538                           	
+   539  074E                     l2163:	
+   540                           ;diano.c: 34: lcd_data(0);
+   541  074E  3000               	movlw	(0)
+   542  074F  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   543                           	line	35
+   544                           	
+   545  0754                     l2165:	
+   546                           ;diano.c: 35: lcd_command(0xcf);
+   547  0754  30CF               	movlw	(0CFh)
+   548  0755  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+   549                           	line	36
+   550                           	
+   551  075A                     l2167:	
+   552                           ;diano.c: 36: lcd_data(2);
+   553  075A  3002               	movlw	(02h)
+   554  075B  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   555                           	line	38
+   556                           	
+   557  0760                     l2169:	
+   558                           ;diano.c: 38: lcd_command(0x01);
+   559  0760  3001               	movlw	(01h)
+   560  0761  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+   561                           	line	39
+   562                           	
+   563  0766                     l2171:	
+   564                           ;diano.c: 39: delay();
+   565  0766  120A  118A  25D7   	fcall	_delay
+              120A  118A         
+   566  076B  2F6C               	goto	l2173
+   567                           	line	40
+   568                           ;diano.c: 40: while(1)
+   569                           	
+   570  076C                     l705:	
+   571                           	line	42
+   572                           	
+   573  076C                     l2173:	
+   574                           ;diano.c: 41: {
+   575                           ;diano.c: 42: if(RC3==1)
+   576  076C  1283               	bcf	status, 5	;RP0=0, select bank0
+   577  076D  1303               	bcf	status, 6	;RP1=0, select bank0
+   578  076E  1D87               	btfss	(59/8),(59)&7
+   579  076F  2F71               	goto	u2351
+   580  0770  2F72               	goto	u2350
+   581  0771                     u2351:
+   582  0771  2F78               	goto	l2177
+   583  0772                     u2350:
+   584                           	line	44
+   585                           	
+   586  0772                     l2175:	
+   587                           ;diano.c: 43: {
+   588                           ;diano.c: 44: jump();
+   589  0772  120A  118A  26AD   	fcall	_jump
+              120A  118A         
+   590  0777  2F78               	goto	l2177
+   591                           	line	45
+   592                           	
+   593  0778                     l706:	
+   594                           	line	47
+   595                           	
+   596  0778                     l2177:	
+   597                           ;diano.c: 45: }
+   598                           ;diano.c: 47: lcd_data(3);
+   599  0778  3003               	movlw	(03h)
+   600  0779  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   601                           	line	48
+   602                           	
+   603  077E                     l2179:	
+   604                           ;diano.c: 48: lcd_command(0xcf-j);
+   605  077E  0377               	decf	(_j),w
+   606  077F  3AFF               	xorlw	0ffh
+   607  0780  3ECF               	addlw	0CFh
+   608  0781  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+   609                           	line	49
+   610                           	
+   611  0786                     l2181:	
+   612                           ;diano.c: 49: lcd_data(3);
+   613  0786  3003               	movlw	(03h)
+   614  0787  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   615                           	line	50
+   616                           	
+   617  078C                     l2183:	
+   618                           ;diano.c: 50: delay();
+   619  078C  120A  118A  25D7   	fcall	_delay
+              120A  118A         
+   620                           	line	51
+   621                           	
+   622  0791                     l2185:	
+   623                           ;diano.c: 51: lcd_command(0xcf-j);
+   624  0791  0377               	decf	(_j),w
+   625  0792  3AFF               	xorlw	0ffh
+   626  0793  3ECF               	addlw	0CFh
+   627  0794  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+   628                           	line	52
+   629                           	
+   630  0799                     l2187:	
+   631                           ;diano.c: 52: lcd_data(2);
+   632  0799  3002               	movlw	(02h)
+   633  079A  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   634                           	line	53
+   635                           	
+   636  079F                     l2189:	
+   637                           ;diano.c: 53: j++;
+   638  079F  3001               	movlw	low(01h)
+   639  07A0  07F7               	addwf	(_j),f
+   640  07A1  1803               	skipnc
+   641  07A2  0AF8               	incf	(_j+1),f
+   642  07A3  3000               	movlw	high(01h)
+   643  07A4  07F8               	addwf	(_j+1),f
+   644                           	line	54
+   645                           	
+   646  07A5                     l2191:	
+   647                           ;diano.c: 54: if(j>15&&RC3==0)
+   648  07A5  0878               	movf	(_j+1),w
+   649  07A6  3A80               	xorlw	80h
+   650  07A7  00FF               	movwf	btemp+1
+   651  07A8  3080               	movlw	(high(010h))^80h
+   652  07A9  027F               	subwf	btemp+1,w
+   653  07AA  1D03               	skipz
+   654  07AB  2FAE               	goto	u2365
+   655  07AC  3010               	movlw	low(010h)
+   656  07AD  0277               	subwf	(_j),w
+   657  07AE                     u2365:
+   658                           
+   659  07AE  1C03               	skipc
+   660  07AF  2FB1               	goto	u2361
+   661  07B0  2FB2               	goto	u2360
+   662  07B1                     u2361:
+   663  07B1  2FC7               	goto	l2199
+   664  07B2                     u2360:
+   665                           	
+   666  07B2                     l2193:	
+   667  07B2  1283               	bcf	status, 5	;RP0=0, select bank0
+   668  07B3  1303               	bcf	status, 6	;RP1=0, select bank0
+   669  07B4  1987               	btfsc	(59/8),(59)&7
+   670  07B5  2FB7               	goto	u2371
+   671  07B6  2FB8               	goto	u2370
+   672  07B7                     u2371:
+   673  07B7  2FC7               	goto	l2199
+   674  07B8                     u2370:
+   675                           	line	56
+   676                           	
+   677  07B8                     l2195:	
+   678                           ;diano.c: 55: {
+   679                           ;diano.c: 56: gameover();
+   680  07B8  120A  118A  2658   	fcall	_gameover
+              120A  118A         
+   681                           	line	57
+   682                           ;diano.c: 57: lcd_command(0x01);
+   683  07BD  3001               	movlw	(01h)
+   684  07BE  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+   685                           	line	58
+   686                           	
+   687  07C3                     l2197:	
+   688                           ;diano.c: 58: main();
+   689  07C3  2712  120A  118A   	fcall	_main
+   690  07C6  2FC7               	goto	l2199
+   691                           	line	59
+   692                           	
+   693  07C7                     l707:	
+   694                           	line	60
+   695                           	
+   696  07C7                     l2199:	
+   697                           ;diano.c: 59: }
+   698                           ;diano.c: 60: if(j>15)
+   699  07C7  0878               	movf	(_j+1),w
+   700  07C8  3A80               	xorlw	80h
+   701  07C9  00FF               	movwf	btemp+1
+   702  07CA  3080               	movlw	(high(010h))^80h
+   703  07CB  027F               	subwf	btemp+1,w
+   704  07CC  1D03               	skipz
+   705  07CD  2FD0               	goto	u2385
+   706  07CE  3010               	movlw	low(010h)
+   707  07CF  0277               	subwf	(_j),w
+   708  07D0                     u2385:
+   709                           
+   710  07D0  1C03               	skipc
+   711  07D1  2FD3               	goto	u2381
+   712  07D2  2FD4               	goto	u2380
+   713  07D3                     u2381:
+   714  07D3  2FEF               	goto	l2209
+   715  07D4                     u2380:
+   716                           	line	62
+   717                           	
+   718  07D4                     l2201:	
+   719                           ;diano.c: 61: {
+   720                           ;diano.c: 62: lcd_command(0xc0);
+   721  07D4  30C0               	movlw	(0C0h)
+   722  07D5  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+   723                           	line	63
+   724                           ;diano.c: 63: lcd_data(3);
+   725  07DA  3003               	movlw	(03h)
+   726  07DB  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   727                           	line	64
+   728                           	
+   729  07E0                     l2203:	
+   730                           ;diano.c: 64: j=0;
+   731  07E0  01F7               	clrf	(_j)
+   732  07E1  01F8               	clrf	(_j+1)
+   733                           	line	65
+   734                           	
+   735  07E2                     l2205:	
+   736                           ;diano.c: 65: lcd_command(0xc0);
+   737  07E2  30C0               	movlw	(0C0h)
+   738  07E3  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+   739                           	line	66
+   740                           	
+   741  07E8                     l2207:	
+   742                           ;diano.c: 66: lcd_data(0);
+   743  07E8  3000               	movlw	(0)
+   744  07E9  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   745  07EE  2FEF               	goto	l2209
+   746                           	line	67
+   747                           	
+   748  07EF                     l708:	
+   749                           	line	68
+   750                           	
+   751  07EF                     l2209:	
+   752                           ;diano.c: 67: }
+   753                           ;diano.c: 68: if(RC3==1)
+   754  07EF  1283               	bcf	status, 5	;RP0=0, select bank0
+   755  07F0  1303               	bcf	status, 6	;RP1=0, select bank0
+   756  07F1  1D87               	btfss	(59/8),(59)&7
+   757  07F2  2FF4               	goto	u2391
+   758  07F3  2FF5               	goto	u2390
+   759  07F4                     u2391:
+   760  07F4  2F6C               	goto	l2173
+   761  07F5                     u2390:
+   762                           	line	70
+   763                           	
+   764  07F5                     l2211:	
+   765                           ;diano.c: 69: {
+   766                           ;diano.c: 70: jump();
+   767  07F5  120A  118A  26AD   	fcall	_jump
+              120A  118A         
+   768  07FA  2F6C               	goto	l2173
+   769                           	line	71
+   770                           	
+   771  07FB                     l709:	
+   772  07FB  2F6C               	goto	l2173
+   773                           	line	72
+   774                           	
+   775  07FC                     l710:	
+   776                           	line	40
+   777  07FC  2F6C               	goto	l2173
+   778                           	
+   779  07FD                     l711:	
+   780                           	line	73
+   781                           	
+   782  07FD                     l712:	
+   783                           	global	start
+   784  07FD  120A  118A  2800   	ljmp	start
+   785                           	opt stack 0
+   786                           GLOBAL	__end_of_main
+   787  0800                     	__end_of_main:
+   788 ;; =============== function _main ends ============
+   789                           
+   790                           	signat	_main,88
+   791                           	global	_gameover
+   792                           psect	text175,local,class=CODE,delta=2
+   793                           global __ptext175
+   794  0658                     __ptext175:
+   795                           
+   796 ;; *************** function _gameover *****************
+   797 ;; Defined at:
+   798 ;;		line 122 in file "G:\PIC ass\LCD Display\diano\diano.c"
+   799 ;; Parameters:    Size  Location     Type
+   800 ;;		None
+   801 ;; Auto vars:     Size  Location     Type
+   802 ;;		None
+   803 ;; Return value:  Size  Location     Type
+   804 ;;		None               void
+   805 ;; Registers used:
+   806 ;;		wreg, status,2, status,0, pclath, cstack
+   807 ;; Tracked objects:
+   808 ;;		On entry : 0/0
+   809 ;;		On exit  : 0/0
+   810 ;;		Unchanged: 0/0
+   811 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   812 ;;      Params:         0       0       0       0       0
+   813 ;;      Locals:         0       0       0       0       0
+   814 ;;      Temps:          0       0       0       0       0
+   815 ;;      Totals:         0       0       0       0       0
+   816 ;;Total ram usage:        0 bytes
+   817 ;; Hardware stack levels used:    1
+   818 ;; Hardware stack levels required when called:    2
+   819 ;; This function calls:
+   820 ;;		_lcd_command
+   821 ;;		_lcd_data
+   822 ;; This function is called by:
+   823 ;;		_main
+   824 ;; This function uses a non-reentrant model
+   825 ;;
+   826                           psect	text175
+   827                           	file	"G:\PIC ass\LCD Display\diano\diano.c"
+   828                           	line	122
+   829                           	global	__size_of_gameover
+   830  0055                     	__size_of_gameover	equ	__end_of_gameover-_gameover
+   831                           	
+   832  0658                     _gameover:	
+   833                           	opt	stack 5
+   834                           ; Regs used in _gameover: [wreg+status,2+status,0+pclath+cstack]
+   835                           	line	123
+   836                           	
+   837  0658                     l2141:	
+   838                           ;diano.c: 123: lcd_command(0x80);
+   839  0658  3080               	movlw	(080h)
+   840  0659  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+   841                           	line	124
+   842                           ;diano.c: 124: lcd_data(' ');
+   843  065E  3020               	movlw	(020h)
+   844  065F  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   845                           	line	125
+   846                           ;diano.c: 125: lcd_data(' ');
+   847  0664  3020               	movlw	(020h)
+   848  0665  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   849                           	line	126
+   850                           ;diano.c: 126: lcd_data(' ');
+   851  066A  3020               	movlw	(020h)
+   852  066B  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   853                           	line	127
+   854                           ;diano.c: 127: lcd_data('G');
+   855  0670  3047               	movlw	(047h)
+   856  0671  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   857                           	line	128
+   858                           ;diano.c: 128: lcd_data('A');
+   859  0676  3041               	movlw	(041h)
+   860  0677  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   861                           	line	129
+   862                           ;diano.c: 129: lcd_data('M');
+   863  067C  304D               	movlw	(04Dh)
+   864  067D  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   865                           	line	130
+   866                           ;diano.c: 130: lcd_data('E');
+   867  0682  3045               	movlw	(045h)
+   868  0683  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   869                           	line	131
+   870                           ;diano.c: 131: lcd_data(' ');
+   871  0688  3020               	movlw	(020h)
+   872  0689  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   873                           	line	132
+   874                           ;diano.c: 132: lcd_data('O');
+   875  068E  304F               	movlw	(04Fh)
+   876  068F  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   877                           	line	133
+   878                           ;diano.c: 133: lcd_data('V');
+   879  0694  3056               	movlw	(056h)
+   880  0695  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   881                           	line	134
+   882                           ;diano.c: 134: lcd_data('E');
+   883  069A  3045               	movlw	(045h)
+   884  069B  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   885                           	line	135
+   886                           ;diano.c: 135: lcd_data('R');
+   887  06A0  3052               	movlw	(052h)
+   888  06A1  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   889                           	line	136
+   890                           ;diano.c: 136: lcd_data(0);
+   891  06A6  3000               	movlw	(0)
+   892  06A7  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   893                           	line	137
+   894                           	
+   895  06AC                     l732:	
+   896  06AC  0008               	return
+   897                           	opt stack 0
+   898                           GLOBAL	__end_of_gameover
+   899  06AD                     	__end_of_gameover:
+   900 ;; =============== function _gameover ends ============
+   901                           
+   902                           	signat	_gameover,88
+   903                           	global	_jump
+   904                           psect	text176,local,class=CODE,delta=2
+   905                           global __ptext176
+   906  06AD                     __ptext176:
+   907                           
+   908 ;; *************** function _jump *****************
+   909 ;; Defined at:
+   910 ;;		line 105 in file "G:\PIC ass\LCD Display\diano\diano.c"
+   911 ;; Parameters:    Size  Location     Type
+   912 ;;		None
+   913 ;; Auto vars:     Size  Location     Type
+   914 ;;  i               2    1[COMMON] int 
+   915 ;; Return value:  Size  Location     Type
+   916 ;;		None               void
+   917 ;; Registers used:
+   918 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   919 ;; Tracked objects:
+   920 ;;		On entry : 0/0
+   921 ;;		On exit  : 0/0
+   922 ;;		Unchanged: 0/0
+   923 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   924 ;;      Params:         0       0       0       0       0
+   925 ;;      Locals:         2       0       0       0       0
+   926 ;;      Temps:          0       0       0       0       0
+   927 ;;      Totals:         2       0       0       0       0
+   928 ;;Total ram usage:        2 bytes
+   929 ;; Hardware stack levels used:    1
+   930 ;; Hardware stack levels required when called:    2
+   931 ;; This function calls:
+   932 ;;		_lcd_command
+   933 ;;		_lcd_data
+   934 ;;		_delay
+   935 ;; This function is called by:
+   936 ;;		_main
+   937 ;; This function uses a non-reentrant model
+   938 ;;
+   939                           psect	text176
+   940                           	file	"G:\PIC ass\LCD Display\diano\diano.c"
+   941                           	line	105
+   942                           	global	__size_of_jump
+   943  0065                     	__size_of_jump	equ	__end_of_jump-_jump
+   944                           	
+   945  06AD                     _jump:	
+   946                           	opt	stack 5
+   947                           ; Regs used in _jump: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   948                           	line	106
+   949                           	
+   950  06AD                     l2125:	
+   951                           ;diano.c: 106: lcd_command(0xc0);
+   952  06AD  30C0               	movlw	(0C0h)
+   953  06AE  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+   954                           	line	107
+   955                           ;diano.c: 107: lcd_data(3);
+   956  06B3  3003               	movlw	(03h)
+   957  06B4  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   958                           	line	108
+   959                           ;diano.c: 108: lcd_command(0x81);
+   960  06B9  3081               	movlw	(081h)
+   961  06BA  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+   962                           	line	109
+   963                           ;diano.c: 109: lcd_data(1);
+   964  06BF  3001               	movlw	(01h)
+   965  06C0  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+   966                           	line	110
+   967                           ;diano.c: 110: delay();
+   968  06C5  120A  118A  25D7   	fcall	_delay
+              120A  118A         
+   969                           	line	111
+   970                           	
+   971  06CA                     l2127:	
+   972                           ;diano.c: 111: for(int i=0;i<8;i++)
+   973  06CA  01F1               	clrf	(jump@i)
+   974  06CB  01F2               	clrf	(jump@i+1)
+   975                           	
+   976  06CC                     l2129:	
+   977  06CC  0872               	movf	(jump@i+1),w
+   978  06CD  3A80               	xorlw	80h
+   979  06CE  00FF               	movwf	btemp+1
+   980  06CF  3080               	movlw	(high(08h))^80h
+   981  06D0  027F               	subwf	btemp+1,w
+   982  06D1  1D03               	skipz
+   983  06D2  2ED5               	goto	u2335
+   984  06D3  3008               	movlw	low(08h)
+   985  06D4  0271               	subwf	(jump@i),w
+   986  06D5                     u2335:
+   987                           
+   988  06D5  1C03               	skipc
+   989  06D6  2ED8               	goto	u2331
+   990  06D7  2ED9               	goto	u2330
+   991  06D8                     u2331:
+   992  06D8  2EDB               	goto	l2133
+   993  06D9                     u2330:
+   994  06D9  2EF9               	goto	l2139
+   995                           	
+   996  06DA                     l2131:	
+   997  06DA  2EF9               	goto	l2139
+   998                           	line	112
+   999                           	
+  1000  06DB                     l727:	
+  1001                           	line	113
+  1002                           	
+  1003  06DB                     l2133:	
+  1004                           ;diano.c: 112: {
+  1005                           ;diano.c: 113: lcd_data(object1[i]);
+  1006  06DB  0871               	movf	(jump@i),w
+  1007  06DC  3E28               	addlw	_object1&0ffh
+  1008  06DD  0084               	movwf	fsr0
+  1009  06DE  1383               	bcf	status, 7	;select IRP bank0
+  1010  06DF  0800               	movf	indf,w
+  1011  06E0  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+  1012                           	line	111
+  1013                           	
+  1014  06E5                     l2135:	
+  1015  06E5  3001               	movlw	low(01h)
+  1016  06E6  07F1               	addwf	(jump@i),f
+  1017  06E7  1803               	skipnc
+  1018  06E8  0AF2               	incf	(jump@i+1),f
+  1019  06E9  3000               	movlw	high(01h)
+  1020  06EA  07F2               	addwf	(jump@i+1),f
+  1021                           	
+  1022  06EB                     l2137:	
+  1023  06EB  0872               	movf	(jump@i+1),w
+  1024  06EC  3A80               	xorlw	80h
+  1025  06ED  00FF               	movwf	btemp+1
+  1026  06EE  3080               	movlw	(high(08h))^80h
+  1027  06EF  027F               	subwf	btemp+1,w
+  1028  06F0  1D03               	skipz
+  1029  06F1  2EF4               	goto	u2345
+  1030  06F2  3008               	movlw	low(08h)
+  1031  06F3  0271               	subwf	(jump@i),w
+  1032  06F4                     u2345:
+  1033                           
+  1034  06F4  1C03               	skipc
+  1035  06F5  2EF7               	goto	u2341
+  1036  06F6  2EF8               	goto	u2340
+  1037  06F7                     u2341:
+  1038  06F7  2EDB               	goto	l2133
+  1039  06F8                     u2340:
+  1040  06F8  2EF9               	goto	l2139
+  1041                           	
+  1042  06F9                     l728:	
+  1043                           	line	115
+  1044                           	
+  1045  06F9                     l2139:	
+  1046                           ;diano.c: 114: }
+  1047                           ;diano.c: 115: lcd_command(0x81);
+  1048  06F9  3081               	movlw	(081h)
+  1049  06FA  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+  1050                           	line	116
+  1051                           ;diano.c: 116: lcd_data(3);
+  1052  06FF  3003               	movlw	(03h)
+  1053  0700  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+  1054                           	line	117
+  1055                           ;diano.c: 117: lcd_command(0xc0);
+  1056  0705  30C0               	movlw	(0C0h)
+  1057  0706  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+  1058                           	line	118
+  1059                           ;diano.c: 118: lcd_data(0);
+  1060  070B  3000               	movlw	(0)
+  1061  070C  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+  1062                           	line	120
+  1063                           	
+  1064  0711                     l729:	
+  1065  0711  0008               	return
+  1066                           	opt stack 0
+  1067                           GLOBAL	__end_of_jump
+  1068  0712                     	__end_of_jump:
+  1069 ;; =============== function _jump ends ============
+  1070                           
+  1071                           	signat	_jump,88
+  1072                           	global	_dino
+  1073                           psect	text177,local,class=CODE,delta=2
+  1074                           global __ptext177
+  1075  0605                     __ptext177:
+  1076                           
+  1077 ;; *************** function _dino *****************
+  1078 ;; Defined at:
+  1079 ;;		line 179 in file "G:\PIC ass\LCD Display\diano\diano.c"
+  1080 ;; Parameters:    Size  Location     Type
+  1081 ;;  obj             1    wreg     PTR unsigned char 
+  1082 ;;		 -> object2(8), object1(8), object(8), 
+  1083 ;;  num             1    1[COMMON] unsigned char 
+  1084 ;; Auto vars:     Size  Location     Type
+  1085 ;;  obj             1    3[COMMON] PTR unsigned char 
+  1086 ;;		 -> object2(8), object1(8), object(8), 
+  1087 ;;  i               2    4[COMMON] int 
+  1088 ;; Return value:  Size  Location     Type
+  1089 ;;		None               void
+  1090 ;; Registers used:
+  1091 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+  1092 ;; Tracked objects:
+  1093 ;;		On entry : 0/0
+  1094 ;;		On exit  : 0/0
+  1095 ;;		Unchanged: 0/0
+  1096 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1097 ;;      Params:         1       0       0       0       0
+  1098 ;;      Locals:         3       0       0       0       0
+  1099 ;;      Temps:          1       0       0       0       0
+  1100 ;;      Totals:         5       0       0       0       0
+  1101 ;;Total ram usage:        5 bytes
+  1102 ;; Hardware stack levels used:    1
+  1103 ;; Hardware stack levels required when called:    2
+  1104 ;; This function calls:
+  1105 ;;		_lcd_command
+  1106 ;;		_delay
+  1107 ;;		_lcd_data
+  1108 ;; This function is called by:
+  1109 ;;		_main
+  1110 ;; This function uses a non-reentrant model
+  1111 ;;
+  1112                           psect	text177
+  1113                           	file	"G:\PIC ass\LCD Display\diano\diano.c"
+  1114                           	line	179
+  1115                           	global	__size_of_dino
+  1116  0053                     	__size_of_dino	equ	__end_of_dino-_dino
+  1117                           	
+  1118  0605                     _dino:	
+  1119                           	opt	stack 5
+  1120                           ; Regs used in _dino: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+  1121                           ;dino@obj stored from wreg
+  1122  0605  00F3               	movwf	(dino@obj)
+  1123                           	line	180
+  1124                           	
+  1125  0606                     l2107:	
+  1126                           ;diano.c: 180: lcd_command(0x40+num*8);
+  1127  0606  0871               	movf	(dino@num),w
+  1128  0607  00F2               	movwf	(??_dino+0)+0
+  1129  0608  3002               	movlw	(03h)-1
+  1130  0609                     u2305:
+  1131  0609  1003               	clrc
+  1132  060A  0DF2               	rlf	(??_dino+0)+0,f
+  1133  060B  3EFF               	addlw	-1
+  1134  060C  1D03               	skipz
+  1135  060D  2E09               	goto	u2305
+  1136  060E  1003               	clrc
+  1137  060F  0D72               	rlf	(??_dino+0)+0,w
+  1138  0610  3E40               	addlw	040h
+  1139  0611  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+  1140                           	line	181
+  1141                           ;diano.c: 181: delay();
+  1142  0616  120A  118A  25D7   	fcall	_delay
+              120A  118A         
+  1143                           	line	182
+  1144                           	
+  1145  061B                     l2109:	
+  1146                           ;diano.c: 182: for(int i=0;i<8;i++)
+  1147  061B  01F4               	clrf	(dino@i)
+  1148  061C  01F5               	clrf	(dino@i+1)
+  1149                           	
+  1150  061D                     l2111:	
+  1151  061D  0875               	movf	(dino@i+1),w
+  1152  061E  3A80               	xorlw	80h
+  1153  061F  00FF               	movwf	btemp+1
+  1154  0620  3080               	movlw	(high(08h))^80h
+  1155  0621  027F               	subwf	btemp+1,w
+  1156  0622  1D03               	skipz
+  1157  0623  2E26               	goto	u2315
+  1158  0624  3008               	movlw	low(08h)
+  1159  0625  0274               	subwf	(dino@i),w
+  1160  0626                     u2315:
+  1161                           
+  1162  0626  1C03               	skipc
+  1163  0627  2E29               	goto	u2311
+  1164  0628  2E2A               	goto	u2310
+  1165  0629                     u2311:
+  1166  0629  2E2C               	goto	l2115
+  1167  062A                     u2310:
+  1168  062A  2E51               	goto	l2123
+  1169                           	
+  1170  062B                     l2113:	
+  1171  062B  2E51               	goto	l2123
+  1172                           	line	183
+  1173                           	
+  1174  062C                     l746:	
+  1175                           	line	184
+  1176                           	
+  1177  062C                     l2115:	
+  1178                           ;diano.c: 183: {
+  1179                           ;diano.c: 184: lcd_data(obj[i]);
+  1180  062C  0874               	movf	(dino@i),w
+  1181  062D  0773               	addwf	(dino@obj),w
+  1182  062E  00F2               	movwf	(??_dino+0)+0
+  1183  062F  0872               	movf	0+(??_dino+0)+0,w
+  1184  0630  0084               	movwf	fsr0
+  1185  0631  1383               	bcf	status, 7	;select IRP bank0
+  1186  0632  0800               	movf	indf,w
+  1187  0633  120A  118A  25B5   	fcall	_lcd_data
+              120A  118A         
+  1188                           	line	185
+  1189                           	
+  1190  0638                     l2117:	
+  1191                           ;diano.c: 185: delay();
+  1192  0638  120A  118A  25D7   	fcall	_delay
+              120A  118A         
+  1193                           	line	182
+  1194                           	
+  1195  063D                     l2119:	
+  1196  063D  3001               	movlw	low(01h)
+  1197  063E  07F4               	addwf	(dino@i),f
+  1198  063F  1803               	skipnc
+  1199  0640  0AF5               	incf	(dino@i+1),f
+  1200  0641  3000               	movlw	high(01h)
+  1201  0642  07F5               	addwf	(dino@i+1),f
+  1202                           	
+  1203  0643                     l2121:	
+  1204  0643  0875               	movf	(dino@i+1),w
+  1205  0644  3A80               	xorlw	80h
+  1206  0645  00FF               	movwf	btemp+1
+  1207  0646  3080               	movlw	(high(08h))^80h
+  1208  0647  027F               	subwf	btemp+1,w
+  1209  0648  1D03               	skipz
+  1210  0649  2E4C               	goto	u2325
+  1211  064A  3008               	movlw	low(08h)
+  1212  064B  0274               	subwf	(dino@i),w
+  1213  064C                     u2325:
+  1214                           
+  1215  064C  1C03               	skipc
+  1216  064D  2E4F               	goto	u2321
+  1217  064E  2E50               	goto	u2320
+  1218  064F                     u2321:
+  1219  064F  2E2C               	goto	l2115
+  1220  0650                     u2320:
+  1221  0650  2E51               	goto	l2123
+  1222                           	
+  1223  0651                     l747:	
+  1224                           	line	187
+  1225                           	
+  1226  0651                     l2123:	
+  1227                           ;diano.c: 186: }
+  1228                           ;diano.c: 187: lcd_command(0xc0);
+  1229  0651  30C0               	movlw	(0C0h)
+  1230  0652  120A  118A  25A4   	fcall	_lcd_command
+              120A  118A         
+  1231                           	line	188
+  1232                           	
+  1233  0657                     l748:	
+  1234  0657  0008               	return
+  1235                           	opt stack 0
+  1236                           GLOBAL	__end_of_dino
+  1237  0658                     	__end_of_dino:
+  1238 ;; =============== function _dino ends ============
+  1239                           
+  1240                           	signat	_dino,8312
+  1241                           	global	_lcd_data
+  1242                           psect	text178,local,class=CODE,delta=2
+  1243                           global __ptext178
+  1244  05B5                     __ptext178:
+  1245                           
+  1246 ;; *************** function _lcd_data *****************
+  1247 ;; Defined at:
+  1248 ;;		line 75 in file "G:\PIC ass\LCD Display\diano\diano.c"
+  1249 ;; Parameters:    Size  Location     Type
+  1250 ;;  data            1    wreg     unsigned char 
+  1251 ;; Auto vars:     Size  Location     Type
+  1252 ;;  data            1    0[COMMON] unsigned char 
+  1253 ;; Return value:  Size  Location     Type
+  1254 ;;		None               void
+  1255 ;; Registers used:
+  1256 ;;		wreg, status,2, status,0, pclath, cstack
+  1257 ;; Tracked objects:
+  1258 ;;		On entry : 0/0
+  1259 ;;		On exit  : 0/0
+  1260 ;;		Unchanged: 0/0
+  1261 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1262 ;;      Params:         0       0       0       0       0
+  1263 ;;      Locals:         1       0       0       0       0
+  1264 ;;      Temps:          0       0       0       0       0
+  1265 ;;      Totals:         1       0       0       0       0
+  1266 ;;Total ram usage:        1 bytes
+  1267 ;; Hardware stack levels used:    1
+  1268 ;; Hardware stack levels required when called:    1
+  1269 ;; This function calls:
+  1270 ;;		_delay
+  1271 ;; This function is called by:
+  1272 ;;		_main
+  1273 ;;		_jump
+  1274 ;;		_gameover
+  1275 ;;		_dino
+  1276 ;;		_moving_tree
+  1277 ;;		_start
+  1278 ;;		_score
+  1279 ;; This function uses a non-reentrant model
+  1280 ;;
+  1281                           psect	text178
+  1282                           	file	"G:\PIC ass\LCD Display\diano\diano.c"
+  1283                           	line	75
+  1284                           	global	__size_of_lcd_data
+  1285  0011                     	__size_of_lcd_data	equ	__end_of_lcd_data-_lcd_data
+  1286                           	
+  1287  05B5                     _lcd_data:	
+  1288                           	opt	stack 5
+  1289                           ; Regs used in _lcd_data: [wreg+status,2+status,0+pclath+cstack]
+  1290                           ;lcd_data@data stored from wreg
+  1291  05B5  00F0               	movwf	(lcd_data@data)
+  1292                           	line	76
+  1293                           	
+  1294  05B6                     l2099:	
+  1295                           ;diano.c: 76: RC0=1;
+  1296  05B6  1283               	bcf	status, 5	;RP0=0, select bank0
+  1297  05B7  1303               	bcf	status, 6	;RP1=0, select bank0
+  1298  05B8  1407               	bsf	(56/8),(56)&7
+  1299                           	line	77
+  1300                           ;diano.c: 77: RC1=0;
+  1301  05B9  1087               	bcf	(57/8),(57)&7
+  1302                           	line	78
+  1303                           ;diano.c: 78: RC2=1;
+  1304  05BA  1507               	bsf	(58/8),(58)&7
+  1305                           	line	79
+  1306                           	
+  1307  05BB                     l2101:	
+  1308                           ;diano.c: 79: PORTD=data;
+  1309  05BB  0870               	movf	(lcd_data@data),w
+  1310  05BC  0088               	movwf	(8)	;volatile
+  1311                           	line	80
+  1312                           	
+  1313  05BD                     l2103:	
+  1314                           ;diano.c: 80: delay();
+  1315  05BD  120A  118A  25D7   	fcall	_delay
+              120A  118A         
+  1316                           	line	81
+  1317                           	
+  1318  05C2                     l2105:	
+  1319                           ;diano.c: 81: RC2=0;
+  1320  05C2  1283               	bcf	status, 5	;RP0=0, select bank0
+  1321  05C3  1303               	bcf	status, 6	;RP1=0, select bank0
+  1322  05C4  1107               	bcf	(58/8),(58)&7
+  1323                           	line	82
+  1324                           	
+  1325  05C5                     l715:	
+  1326  05C5  0008               	return
+  1327                           	opt stack 0
+  1328                           GLOBAL	__end_of_lcd_data
+  1329  05C6                     	__end_of_lcd_data:
+  1330 ;; =============== function _lcd_data ends ============
+  1331                           
+  1332                           	signat	_lcd_data,4216
+  1333                           	global	_lcd_command
+  1334                           psect	text179,local,class=CODE,delta=2
+  1335                           global __ptext179
+  1336  05A4                     __ptext179:
+  1337                           
+  1338 ;; *************** function _lcd_command *****************
+  1339 ;; Defined at:
+  1340 ;;		line 84 in file "G:\PIC ass\LCD Display\diano\diano.c"
+  1341 ;; Parameters:    Size  Location     Type
+  1342 ;;  data            1    wreg     unsigned char 
+  1343 ;; Auto vars:     Size  Location     Type
+  1344 ;;  data            1    0[COMMON] unsigned char 
+  1345 ;; Return value:  Size  Location     Type
+  1346 ;;		None               void
+  1347 ;; Registers used:
+  1348 ;;		wreg, status,2, status,0, pclath, cstack
+  1349 ;; Tracked objects:
+  1350 ;;		On entry : 0/0
+  1351 ;;		On exit  : 0/0
+  1352 ;;		Unchanged: 0/0
+  1353 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1354 ;;      Params:         0       0       0       0       0
+  1355 ;;      Locals:         1       0       0       0       0
+  1356 ;;      Temps:          0       0       0       0       0
+  1357 ;;      Totals:         1       0       0       0       0
+  1358 ;;Total ram usage:        1 bytes
+  1359 ;; Hardware stack levels used:    1
+  1360 ;; Hardware stack levels required when called:    1
+  1361 ;; This function calls:
+  1362 ;;		_delay
+  1363 ;; This function is called by:
+  1364 ;;		_main
+  1365 ;;		_jump
+  1366 ;;		_gameover
+  1367 ;;		_dino
+  1368 ;;		_moving_tree
+  1369 ;;		_start
+  1370 ;;		_score
+  1371 ;; This function uses a non-reentrant model
+  1372 ;;
+  1373                           psect	text179
+  1374                           	file	"G:\PIC ass\LCD Display\diano\diano.c"
+  1375                           	line	84
+  1376                           	global	__size_of_lcd_command
+  1377  0011                     	__size_of_lcd_command	equ	__end_of_lcd_command-_lcd_command
+  1378                           	
+  1379  05A4                     _lcd_command:	
+  1380                           	opt	stack 5
+  1381                           ; Regs used in _lcd_command: [wreg+status,2+status,0+pclath+cstack]
+  1382                           ;lcd_command@data stored from wreg
+  1383  05A4  00F0               	movwf	(lcd_command@data)
+  1384                           	line	85
+  1385                           	
+  1386  05A5                     l2091:	
+  1387                           ;diano.c: 85: RC0=0;
+  1388  05A5  1283               	bcf	status, 5	;RP0=0, select bank0
+  1389  05A6  1303               	bcf	status, 6	;RP1=0, select bank0
+  1390  05A7  1007               	bcf	(56/8),(56)&7
+  1391                           	line	86
+  1392                           ;diano.c: 86: RC1=0;
+  1393  05A8  1087               	bcf	(57/8),(57)&7
+  1394                           	line	87
+  1395                           ;diano.c: 87: RC2=1;
+  1396  05A9  1507               	bsf	(58/8),(58)&7
+  1397                           	line	88
+  1398                           	
+  1399  05AA                     l2093:	
+  1400                           ;diano.c: 88: PORTD=data;
+  1401  05AA  0870               	movf	(lcd_command@data),w
+  1402  05AB  0088               	movwf	(8)	;volatile
+  1403                           	line	89
+  1404                           	
+  1405  05AC                     l2095:	
+  1406                           ;diano.c: 89: delay();
+  1407  05AC  120A  118A  25D7   	fcall	_delay
+              120A  118A         
+  1408                           	line	90
+  1409                           	
+  1410  05B1                     l2097:	
+  1411                           ;diano.c: 90: RC2=0;
+  1412  05B1  1283               	bcf	status, 5	;RP0=0, select bank0
+  1413  05B2  1303               	bcf	status, 6	;RP1=0, select bank0
+  1414  05B3  1107               	bcf	(58/8),(58)&7
+  1415                           	line	91
+  1416                           	
+  1417  05B4                     l718:	
+  1418  05B4  0008               	return
+  1419                           	opt stack 0
+  1420                           GLOBAL	__end_of_lcd_command
+  1421  05B5                     	__end_of_lcd_command:
+  1422 ;; =============== function _lcd_command ends ============
+  1423                           
+  1424                           	signat	_lcd_command,4216
+  1425                           	global	_delay
+  1426                           psect	text180,local,class=CODE,delta=2
+  1427                           global __ptext180
+  1428  05D7                     __ptext180:
+  1429                           
+  1430 ;; *************** function _delay *****************
+  1431 ;; Defined at:
+  1432 ;;		line 93 in file "G:\PIC ass\LCD Display\diano\diano.c"
+  1433 ;; Parameters:    Size  Location     Type
+  1434 ;;		None
+  1435 ;; Auto vars:     Size  Location     Type
+  1436 ;;		None
+  1437 ;; Return value:  Size  Location     Type
+  1438 ;;		None               void
+  1439 ;; Registers used:
+  1440 ;;		wreg
+  1441 ;; Tracked objects:
+  1442 ;;		On entry : 0/0
+  1443 ;;		On exit  : 0/0
+  1444 ;;		Unchanged: 0/0
+  1445 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1446 ;;      Params:         0       0       0       0       0
+  1447 ;;      Locals:         0       0       0       0       0
+  1448 ;;      Temps:          0       0       0       0       0
+  1449 ;;      Totals:         0       0       0       0       0
+  1450 ;;Total ram usage:        0 bytes
+  1451 ;; Hardware stack levels used:    1
+  1452 ;; This function calls:
+  1453 ;;		Nothing
+  1454 ;; This function is called by:
+  1455 ;;		_main
+  1456 ;;		_lcd_data
+  1457 ;;		_lcd_command
+  1458 ;;		_jump
+  1459 ;;		_dino
+  1460 ;;		_start
+  1461 ;; This function uses a non-reentrant model
+  1462 ;;
+  1463                           psect	text180
+  1464                           	file	"G:\PIC ass\LCD Display\diano\diano.c"
+  1465                           	line	93
+  1466                           	global	__size_of_delay
+  1467  0012                     	__size_of_delay	equ	__end_of_delay-_delay
+  1468                           	
+  1469  05D7                     _delay:	
+  1470                           	opt	stack 5
+  1471                           ; Regs used in _delay: [wreg]
+  1472                           	line	94
+  1473                           	
+  1474  05D7                     l2051:	
+  1475                           ;diano.c: 94: TMR1CS=0;
+  1476  05D7  1283               	bcf	status, 5	;RP0=0, select bank0
+  1477  05D8  1303               	bcf	status, 6	;RP1=0, select bank0
+  1478  05D9  1090               	bcf	(129/8),(129)&7
+  1479                           	line	95
+  1480                           ;diano.c: 95: T1CKPS0=1;
+  1481  05DA  1610               	bsf	(132/8),(132)&7
+  1482                           	line	96
+  1483                           ;diano.c: 96: T1CKPS1=1;
+  1484  05DB  1690               	bsf	(133/8),(133)&7
+  1485                           	line	97
+  1486                           	
+  1487  05DC                     l2053:	
+  1488                           ;diano.c: 97: TMR1H=0x0b;
+  1489  05DC  300B               	movlw	(0Bh)
+  1490  05DD  008F               	movwf	(15)	;volatile
+  1491                           	line	98
+  1492                           ;diano.c: 98: TMR1L=0xdc;
+  1493  05DE  30DC               	movlw	(0DCh)
+  1494  05DF  008E               	movwf	(14)	;volatile
+  1495                           	line	99
+  1496                           	
+  1497  05E0                     l2055:	
+  1498                           ;diano.c: 99: TMR1ON=1;
+  1499  05E0  1410               	bsf	(128/8),(128)&7
+  1500                           	line	100
+  1501                           ;diano.c: 100: while(!TMR1IF);
+  1502  05E1  2DE2               	goto	l721
+  1503                           	
+  1504  05E2                     l722:	
+  1505                           	
+  1506  05E2                     l721:	
+  1507  05E2  1C0C               	btfss	(96/8),(96)&7
+  1508  05E3  2DE5               	goto	u2271
+  1509  05E4  2DE6               	goto	u2270
+  1510  05E5                     u2271:
+  1511  05E5  2DE2               	goto	l721
+  1512  05E6                     u2270:
+  1513                           	
+  1514  05E6                     l723:	
+  1515                           	line	101
+  1516                           ;diano.c: 101: TMR1IF=0;
+  1517  05E6  100C               	bcf	(96/8),(96)&7
+  1518                           	line	102
+  1519                           ;diano.c: 102: TMR1ON=0;
+  1520  05E7  1010               	bcf	(128/8),(128)&7
+  1521                           	line	103
+  1522                           	
+  1523  05E8                     l724:	
+  1524  05E8  0008               	return
+  1525                           	opt stack 0
+  1526                           GLOBAL	__end_of_delay
+  1527  05E9                     	__end_of_delay:
+  1528 ;; =============== function _delay ends ============
+  1529                           
+  1530                           	signat	_delay,88
+  1531                           psect	text181,local,class=CODE,delta=2
+  1532                           global __ptext181
+  1533  0000                     __ptext181:
+  1534                           	global	btemp
+  1535  007E                     	btemp set 07Eh
+  1536                           
+  1537                           	DABS	1,126,2	;btemp
+  1538                           	global	wtemp0
+  1539  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.81 build 7503 
+Symbol Table                                                                                   Fri Sep 22 07:05:25 2023
+
+                   _j 0077                     pc 0002          lcd_data@data 0070                    fsr 0004  
+                 l710 07FC                   l711 07FD                   l712 07FD                   l721 05E2  
+                 l705 076C                   l722 05E2                   l706 0778                   l723 05E6  
+                 l715 05C5                   l707 07C7                   l724 05E8                   l732 06AC  
+                 l708 07EF                   l709 07FB                   l718 05B4                   l727 06DB  
+                 l728 06F9                   l729 0711                   l746 062C                   l747 0651  
+                 l748 0657                   _RC0 0038                   _RC1 0039                   _RC2 003A  
+                 _RC3 003B                   fsr0 0004                   indf 0000                  l2101 05BB  
+                l2103 05BD                  l2111 061D                  l2105 05C2                  l2121 0643  
+                l2113 062B                  l2201 07D4                  l2051 05D7                  l2123 0651  
+                l2115 062C                  l2107 0606                  l2131 06DA                  l2211 07F5  
+                l2203 07E0                  l2053 05DC                  l2117 0638                  l2109 061B  
+                l2133 06DB                  l2125 06AD                  l2141 0658                  l2205 07E2  
+                l2055 05E0                  l2119 063D                  l2135 06E5                  l2127 06CA  
+                l2207 07E8                  l2151 0734                  l2143 0712                  l2137 06EB  
+                l2129 06CC                  l2209 07EF                  l2161 0748                  l2153 0735  
+                l2145 072F                  l2091 05A5                  l2139 06F9                  l2171 0766  
+                l2163 074E                  l2155 0736                  l2147 0732                  l2093 05AA  
+                l2181 0786                  l2173 076C                  l2165 0754                  l2157 073C  
+                l2149 0733                  l2095 05AC                  l2191 07A5                  l2183 078C  
+                l2175 0772                  l2167 075A                  l2159 0742                  l2097 05B1  
+                l2193 07B2                  l2185 0791                  l2177 0778                  l2169 0760  
+                l2099 05B6                  l2195 07B8                  l2187 0799                  l2179 077E  
+                l2197 07C3                  l2189 079F                  l2199 07C7                  u2310 062A  
+                u2311 0629                  u2320 0650                  u2321 064F                  u2305 0609  
+                u2330 06D9                  u2315 0626                  u2331 06D8                  u2340 06F8  
+                u2325 064C                  u2341 06F7                  u2270 05E6                  u2350 0772  
+                u2271 05E5                  u2335 06D5                  u2351 0771                  u2360 07B2  
+                u2345 06F4                  u2361 07B1                  u2370 07B8                  u2371 07B7  
+                u2380 07D4                  u2381 07D3                  u2365 07AE                  u2390 07F5  
+                u2391 07F4                  u2385 07D0                  _dino 0605                  _main 0712  
+                _jump 06AD                  btemp 007E                  start 0000                 ?_dino 0071  
+               ?_main 0070                 ?_jump 0070                 _TMR1H 000F                 _TMR1L 000E  
+               _PORTD 0008                 _TRISD 0088                 _delay 05D7                 dino@i 0074  
+               pclath 000A                 jump@i 0071                 status 0003                 wtemp0 007E  
+        __end_of_dino 0658          __end_of_main 0800          __end_of_jump 0712                ??_dino 0072  
+              ??_main 0076                ??_jump 0071                ?_delay 0070                _TMR1IF 0060  
+              _TMR1CS 0081                _TMR1ON 0080                _TRISC0 0438                _TRISC1 0439  
+              _TRISC2 043A                _TRISC3 043B      __end_of_gameover 06AD      __end_of_lcd_data 05C6  
+__size_of_lcd_command 0011                _object 0020        __pcstackCOMMON 0070          __pidataBANK0 0594  
+       __end_of_delay 05E9               ??_delay 0070            __pbssBANK0 0030       lcd_command@data 0070  
+          __pmaintext 0712               _T1CKPS0 0084               _T1CKPS1 0085             ?_gameover 0070  
+           ?_lcd_data 0070               _object1 0028               _object2 0030               dino@obj 0073  
+             dino@num 0071            ??_gameover 0071            ??_lcd_data 0070  end_of_initialization 0601  
+             init_ram 05CA         ??_lcd_command 0070   start_initialization 05E9   __end_of_lcd_command 05B5  
+         __pdataBANK0 0020           __pbssCOMMON 0077     __size_of_gameover 0055     __size_of_lcd_data 0011  
+           __ptext180 05D7             __ptext181 0000             __ptext175 0658             __ptext176 06AD  
+           __ptext177 0605             __ptext178 05B5             __ptext179 05A4        __size_of_delay 0012  
+         _lcd_command 05A4             init_fetch 05C6              _gameover 0658              _lcd_data 05B5  
+       __size_of_dino 0053         __size_of_main 00EE         __size_of_jump 0065          ?_lcd_command 0070  
